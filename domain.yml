@@ -1,0 +1,75 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- loc_provided
+- hungry
+- cuisines_provided
+- affirm
+- greet
+- deny
+- mood_great
+- goodbye
+- mood_unhappy
+- bot_challenge
+- stop
+entities:
+- cuisines
+- location
+slots:
+  location:
+    type: text
+    influence_conversation: false
+  cuisines:
+    type: list
+    influence_conversation: false
+  requested_slot:
+    type: text
+    influence_conversation: false
+responses:
+  utter_submit:
+  - text: result {res}
+  utter_ask_location:
+  - text: where are you based?
+  utter_ask_cuisines:
+  - text: Ok. what would you like ?
+  utter_lc_based_result:
+  - text: here are the list of reastuarent :){result}
+  utter_greet:
+  - text: Hey! How may i help you?
+  utter_action_greet_user:
+  - text: hello there, Foodies
+  utter_cheer_up:
+  - text: it's hard to be in a good mood when you're feeling hungry.I can help you find delicious food according to your given location
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, im here to help you find best reasturant.
+actions:
+- action_greet_user
+- action_zomato_api
+- utter_ask_cuisines
+- utter_ask_location
+- utter_cheer_up
+- utter_did_that_help
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_iamabot
+- utter_lc_based_result
+- utter_submit
+forms:
+  restaurant_form:
+    location:
+    - type: from_text
+      intent: loc_provided
+      not_intent: excluded_intent
+    cuisines:
+    - type: from_text
+      intent: cuisines_provided
+      not_intent: excluded_intent

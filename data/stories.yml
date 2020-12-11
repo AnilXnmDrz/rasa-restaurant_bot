@@ -1,0 +1,177 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: hungry
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - requested_slot: location
+  - intent: loc_provided
+    entities:
+    - location: gangtok
+  - slot_was_set:
+    - location: gangtok
+  - slot_was_set:
+    - requested_slot: cuisines
+  - slot_was_set:
+    - cuisines:
+      - chinese
+  - slot_was_set:
+    - cuisines: chinese
+  - action: utter_submit
+  - action: action_zomato_api
+  - action: utter_did_that_help
+  - intent: mood_great
+  - action: utter_happy
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: hungry
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - requested_slot: location
+  - intent: loc_provided
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: hungry
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - requested_slot: location
+  - slot_was_set:
+    - location: gangtok
+  - slot_was_set:
+    - location: gangtok
+  - slot_was_set:
+    - requested_slot: cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisines: burger
+  - slot_was_set:
+    - cuisines:
+      - burger
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: action_zomato_api
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: interactive_story_3
+  steps:
+  - intent: hungry
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - requested_slot: location
+    - slot{"location": gangtok}
+
+- story: interactive_story_4
+  steps:
+    - active_loop: restaurant_form  
+    - slot_was_set:
+      - requested_slot: cuisines
+      - slot{"cuisines": burger}    
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: hungry
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - requested_slot: location
+  - slot_was_set:
+    - location: delhi
+  - slot_was_set:
+    - location: delhi
+  - slot_was_set:
+    - requested_slot: cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisines: chinese
+  - slot_was_set:
+    - cuisines:
+      - chinese
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: action_zomato_api
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: hungry
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - requested_slot: location
+  - slot_was_set:
+    - location: gangtok
+  - slot_was_set:
+    - location: gangtok
+  - slot_was_set:
+    - requested_slot: cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisines: asian
+  - slot_was_set:
+    - cuisines:
+      - asian
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit
+  - action: action_zomato_api
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
