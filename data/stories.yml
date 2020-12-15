@@ -1,14 +1,5 @@
 version: "2.0"
-
 stories:
-
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
 - story: sad path 1
   steps:
   - intent: greet
@@ -18,7 +9,6 @@ stories:
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
-
 - story: sad path 2
   steps:
   - intent: greet
@@ -28,150 +18,382 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
-
 - story: interactive_story_1
   steps:
   - intent: greet
   - action: utter_greet
   - intent: hungry
-  - action: restaurant_form
-  - active_loop: restaurant_form
-  - slot_was_set:
-    - requested_slot: location
+  - action: utter_ask_Location
   - intent: loc_provided
     entities:
-    - location: gangtok
+    - location: city
+  - action: action_validate_city
   - slot_was_set:
-    - location: gangtok
+    - City: 15
   - slot_was_set:
-    - requested_slot: cuisines
+    - Collection:
+      - 512
+      - 365
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav
+  - action: action_validate_cuisine
   - slot_was_set:
-    - cuisines:
-      - chinese
+    - Cuisines: 45
+  - action: action_zomato_api
+  - action: utter_did_that_help
+  - intent: mood_great
+- story: interactive_story_1
+  steps:
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city
+  - action: action_validate_city
   - slot_was_set:
-    - cuisines: chinese
-  - action: utter_submit
+    - City: 15
+  - slot_was_set:
+    - Collection:
+      - 438
+      - 38600
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav
+  - action: action_validate_cuisine
+  - slot_was_set:
+    - Cuisines: 31
+  - action: action_zomato_api
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_deny
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-pentok
+  - action: action_validate_city
+- story: interactive_story_3
+  steps:
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-burtuk
+  - action: action_validate_city
+- story: interactive_story_4
+  steps:
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-hosp
+  - action: action_validate_city
+- story: interactive_story_1
+  steps:
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-mangsan
+  - action: action_validate_city
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-gangtok
+  - action: action_validate_city
+  - slot_was_set:
+    - City: 15
+  - slot_was_set:
+    - Collection:
+      - 438
+      - 38600
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav-momos
+  - action: action_validate_cuisine
+  - slot_was_set:
+    - Cuisines: 1051
+  - action: action_zomato_api
+- story: Story from Conversation ID dfbcd8aad13f48fd91e7
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-gagh
+  - action: action_validate_city
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-gangtok
+  - action: action_validate_city
+  - slot_was_set:
+    - City: 15
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav-noodles
+  - action: action_validate_cuisine
+- story: interactive_story_5
+  steps:
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-gangtok
+  - action: action_validate_city
+  - slot_was_set:
+    - City: 15
+  - slot_was_set:
+    - Collection:
+      - 438
+      - 38600
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav-ramen
+  - action: action_validate_cuisine
+  - intent: change_cuisine
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav-chinese
+  - action: action_validate_cuisine
+  - slot_was_set:
+    - Cuisines: 25
   - action: action_zomato_api
   - action: utter_did_that_help
   - intent: mood_great
   - action: utter_happy
-
-- story: interactive_story_1
+  - intent: goodbye
+  - action: utter_goodbye
+- story: interactive_story_6
   steps:
-  - intent: greet
-  - action: utter_greet
   - intent: hungry
-  - action: restaurant_form
-  - active_loop: restaurant_form
-  - slot_was_set:
-    - requested_slot: location
+  - action: utter_ask_Location
   - intent: loc_provided
-
-- story: interactive_story_1
+    entities:
+    - location: city-gangtok
+  - action: action_validate_city
+  - slot_was_set:
+    - City: 1
+  - slot_was_set:
+    - Collection:
+      - 43
+      - 386
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav-ramen
+  - action: action_validate_cuisine
+  - intent: change_cuisine
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav-chinese
+  - action: action_validate_cuisine
+  - slot_was_set:
+    - Cuisines: 2
+  - action: action_zomato_api
+  - action: utter_did_that_help
+  - intent: mood_great
+  - action: utter_happy
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Story from Conversation ID 3c44f45e3db145c4be8a8b75305ece59
   steps:
   - intent: greet
   - action: utter_greet
   - intent: hungry
-  - action: restaurant_form
-  - active_loop: restaurant_form
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-manhan
+  - action: action_validate_city
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+  - action: action_validate_city
   - slot_was_set:
-    - requested_slot: location
-  - slot_was_set:
-    - location: gangtok
-  - slot_was_set:
-    - location: gangtok
-  - slot_was_set:
-    - requested_slot: cuisines
+    - City: 15
+  - action: utter_ask_Cuisines
   - intent: cuisines_provided
     entities:
-    - cuisines: burger
+    - cuisine: fav-noodles
+  - action: action_validate_cuisine
+  - intent: change_cuisine
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav-tea
+  - action: action_validate_cuisine
   - slot_was_set:
-    - cuisines:
-      - burger
-  - action: action_deactivate_loop
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: utter_submit
+    - Cuisines: 163
   - action: action_zomato_api
   - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: interactive_story_3
-  steps:
-  - intent: hungry
-  - action: restaurant_form
-  - active_loop: restaurant_form
-  - slot_was_set:
-    - requested_slot: location
-    - slot{"location": gangtok}
-
-- story: interactive_story_4
-  steps:
-    - active_loop: restaurant_form  
-    - slot_was_set:
-      - requested_slot: cuisines
-      - slot{"cuisines": burger}    
-
-- story: interactive_story_1
+  - intent: deny
+  - action: utter_goodbye
+- story: Story from Conversation ID 973974fc7d464a3585c6a31d7d74e177
   steps:
   - intent: greet
   - action: utter_greet
   - intent: hungry
-  - action: restaurant_form
-  - active_loop: restaurant_form
-  - slot_was_set:
-    - requested_slot: location
-  - slot_was_set:
-    - location: delhi
-  - slot_was_set:
-    - location: delhi
-  - slot_was_set:
-    - requested_slot: cuisines
-  - intent: cuisines_provided
+  - action: utter_ask_Location
+  - intent: loc_provided
     entities:
-    - cuisines: chinese
-  - slot_was_set:
-    - cuisines:
-      - chinese
-  - action: action_deactivate_loop
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: utter_submit
-  - action: action_zomato_api
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: interactive_story_1
+    - location: city-lalahfg
+  - action: action_validate_city
+  - intent: goodbye
+  - action: utter_goodbye
+- story: Story from Conversation ID 8367611a47db4515b2ba86aa8032cbfd
   steps:
   - intent: greet
   - action: utter_greet
+  - intent: nlu_fallback
+  - action: utter_out_of_scope
+  - intent: nlu_fallback
+  - action: utter_out_of_scope
   - intent: hungry
-  - action: restaurant_form
-  - active_loop: restaurant_form
-  - slot_was_set:
-    - requested_slot: location
-  - slot_was_set:
-    - location: gangtok
-  - slot_was_set:
-    - location: gangtok
-  - slot_was_set:
-    - requested_slot: cuisines
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-jorhat
+  - action: action_validate_city
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city-new
+  - action: action_validate_city
+  - action: utter_ask_Cuisines
   - intent: cuisines_provided
     entities:
-    - cuisines: asian
+    - cuisine: fav
+  - action: action_validate_cuisine
   - slot_was_set:
-    - cuisines:
-      - asian
-  - action: action_deactivate_loop
-  - active_loop: null
+    - Cuisines: 10
+  - action: action_zomato_api
+- story: Story from Conversation ID 1ca8bd63bf2e423f85c2e554ea132382
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: nlu_fallback
+  - action: utter_out_of_scope
+  - intent: bot_challenge
+  - action: utter_iamabot
+- story: interactive_story_1
+  steps:
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city
+  - action: action_validate_city
   - slot_was_set:
-    - requested_slot: null
-  - action: utter_submit
+    - City: 15
+  - slot_was_set:
+    - Collection:
+      - 438
+      - 38600
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav
+  - action: action_validate_cuisine
+  - slot_was_set:
+    - Cuisines: 10
+  - action: action_zomato_api
+- story: interactive_story_1
+  steps:
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city
+  - action: action_validate_city
+  - slot_was_set:
+    - City: 15
+  - slot_was_set:
+    - Collection:
+      - 55
+      - 386
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav
+  - action: action_validate_cuisine
+  - slot_was_set:
+    - Cuisines: 122
+  - action: action_zomato_api
+- story: interactive_story_1
+  steps:
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city
+  - action: action_validate_city
+  - slot_was_set:
+    - City: 15
+  - slot_was_set:
+    - Collection:
+      - 436
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav
+  - action: action_validate_cuisine
+  - slot_was_set:
+    - Cuisines: 158
+  - action: action_zomato_api
+- story: interactive_story_1
+  steps:
+  - intent: hungry
+  - action: utter_ask_Location
+  - intent: loc_provided
+    entities:
+    - location: city
+  - action: action_validate_city
+  - slot_was_set:
+    - City: 15
+  - slot_was_set:
+    - Collection:
+      - 438
+      - 38600
+  - action: utter_ask_Cuisines
+  - intent: cuisines_provided
+    entities:
+    - cuisine: fav
+  - action: action_validate_cuisine
+  - slot_was_set:
+    - Cuisines: 25
   - action: action_zomato_api
   - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+- story: Story from Conversation ID cacbd14f634e43468a50eacc427163a3
+  steps:
+  - action: utter_ask_Location
+  - slot_was_set:
+    - City: 15
+  - intent: hungry
+  - slot_was_set:
+    - City: 15
+  - intent: deny
+  - action: action_validate_cuisine
+  - slot_was_set:
+    - Cuisines: 25
+  - action: action_zomato_api
+  - action: utter_did_that_help
+
+

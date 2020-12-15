@@ -4,48 +4,38 @@ nlu:
   examples: |
     - wait i want to change location
     - change my location
+- intent: website
+  examples: |
+    - [website](ok) link
+- intent: change_cuisine
+  examples: |
+    - wait i want to change cuisine
 - intent: cuisines_provided
   examples: |
-    - [chinese](cuisines)
-    - [burger](cuisines)
-    - [indian](cuisines)
-    - [continental](cuisines)
-    - [american](cuisines)
-    - [italian](cuisines)
-    - [british](cuisines)
-    - [french](cuisines)
-    - [greek](cuisines)
-    - [caribbean](cuisines)
-    - [japanese](cuisines)
-    - [Mediterranean](cuisines)
-    - [mexican](cuisines)
-    - [moroccan](cuisines)
-    - [spanish](cuisines)
-    - [thai](cuisines)
-    - [turkish](cuisines)
-    - [vietnamese](cuisines)
-    - [sindhi](cuisines)
-    - [BBQ](cuisines)
-    - [Beverages](cuisines)
-    - [North Indian](cuisines)
-    - [Asian](cuisines)
-    - [Momos](cuisines)
-    
-  
+    - [fav](cuisine)
+    - [fav](cuisine) chinese
+    - [fav-ramen](cuisine)
+    - [fav-momos](cuisine)
+    - [fav-chinese](cuisine)
+    - [fav](cuisine) bengali
 - intent: loc_provided
   examples: |
-    - [delhi](location)
-    - [kolkata](location)
-    - [gangtok](location)
-    - [mumbai](location)
-    - [bangalore](location)
-    - [hyderabad](location)
-    - [chennai](location)
-  
+    - [city](location)
+    - [city](location)-gangtok
+    - [city-gangtok](location)
+    - [city-mangan](location)
+    - [city-silguri](location)
+    - [city-siliguri](location)
+    - [city-pentok](location)
+    - [city-burtuk](location)
+    - [city-hosp](location)
+    - [city-mangsan](location)
+    - [city](location) gangtok
 - intent: hungry
   examples: |
-    - tell me about near reastuarent
+    - im looking for reastuarant
     - im hungry
+    - can you find a restaurant for me
 - intent: greet
   examples: |
     - hey
@@ -91,6 +81,7 @@ nlu:
     - don't like that
     - no way
     - not really
+    - deny
 - intent: mood_great
   examples: |
     - perfect
@@ -107,6 +98,7 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - mood_great
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -129,3 +121,7 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    - what you can do?
+- intent: nlu_fallback
+  examples: |
+    - website 'https://www.zomato.com/gangtok/taste-of-tibet-vishal-gaon/menu?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1&openSwipeBox=menu&showMinimal=1#tabtop'
