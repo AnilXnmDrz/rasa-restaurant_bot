@@ -1,0 +1,127 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- loc_provided
+- hungry
+- cuisines_provided
+- mood_great
+- nlu_fallback
+- deny
+- greet
+- goodbye
+- change_cuisine
+- utter_ask_Location
+- utter_ask_Cuisines
+- affirm
+- mood_unhappy
+- bot_challenge
+- stop
+- fetch_url
+- website
+entities:
+- cuisine
+- location
+- ok
+slots:
+  Location:
+    type: any
+    influence_conversation: false
+  Cuisines:
+    type: text
+    influence_conversation: true
+  City:
+    type: text
+    influence_conversation: true
+  Latitude:
+    type: text
+    influence_conversation: false
+  Longitude:
+    type: text
+    influence_conversation: true
+  Collection:
+    type: text
+    influence_conversation: true
+  url:
+    type: text
+    influence_conversation: false
+responses:
+  utter_ask_Location:
+  - text: "Please provide me with your location.\n*Type(city-your cityname)"
+  utter_ask_Cuisines:
+  - text: "Ok. what would you like to eat today? \n*Type(fav-preffered cuisine)"
+  utter_lc_based_result:
+  - buttons:
+    - payload: website
+      title: 1{name1}
+    - payload: website
+      title: 2{name2}
+    - payload: website
+      title: 3{name3}
+    - payload: website
+      title: 4{name4}
+    - payload: website
+      title: 5{name5}
+    text: "here are the list of reastuarent links {link1} \n{link2} \n{link3} \n{link4}\
+      \ \n{link5}"
+  utter_greet:
+  - text: Hey! How may i help you?
+  utter_action_greet_user:
+  - text: hello there, Foodies
+  utter_cheer_up:
+  - text: it's hard to be in a good mood when you're feeling hungry.I can help you
+      find delicious food according to your given location
+  utter_did_that_help:
+  - buttons:
+    - payload: mood_great
+      title: Yes
+    - payload: deny
+      title: No
+    text: Did that help you
+  utter_change_location:
+  - buttons:
+    - payload: hungry
+      title: try another city.
+    - payload: goodbye
+      title: leave
+    text: no service available at this location
+  utter_change_cuisine:
+  - buttons:
+    - payload: change_cuisine
+      title: try another cuisine.
+    - payload: goodbye
+      title: leave
+    text: cuisine is not available
+  utter_happy:
+  - text: Great, carry on!
+  utter_deny:
+  - text: you can try again
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, im here to help you find best reasturant.
+  utter_out_of_scope:
+  - text: Sorry, I didn't get what you said. Please rephrase what you said.
+  utter_display_url:
+  - text: restaurant link []{link}
+actions:
+- action_check_geo
+- action_greet_user
+- action_show_url
+- action_validate_city
+- action_validate_cuisine
+- action_zomato_api
+- utter_ask_Cuisines
+- utter_ask_Location
+- utter_change_cuisine
+- utter_change_location
+- utter_cheer_up
+- utter_deny
+- utter_did_that_help
+- utter_display_url
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_iamabot
+- utter_lc_based_result
+- utter_out_of_scope
